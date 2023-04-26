@@ -1,0 +1,27 @@
+.container-home {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.cards-container-home {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-more-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-more-pokemones {
+    font-size: 2rem;
+    margin: 2rem;
+}

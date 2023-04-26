@@ -1,0 +1,221 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vina+Sans&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Rubik+Pixels&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
+:root {
+    --bug: #aedf78;
+    --water: #43ccff;
+    --grass: #00ca91;
+    --fire: #e95c4d;
+    --normal: #a5a5a5;
+    --poison: #611380;
+    --electric: #f9be00;
+    --ground: #bfac21;
+    --fairy: #f87ea7;
+    --fighting: #e81319;
+    --psychic: #8a0532;
+    --ghost: #8e55a4;
+    --rock: #776a3e;
+    --ice: #66d1e5;
+    --flying: #5eb9b2;
+    --dark: #2d221c;
+    --dragon: #29036a;
+    --steel: #7b8e8a;
+}
+
+.grass {
+    background: var(--grass);
+    box-shadow: 0 0 20px var(--grass);
+    outline: 0px solid var(--grass);
+}
+
+.bug {
+    background: var(--bug);
+    box-shadow: 0 0 20px var(--bug);
+    outline: 0px solid var(--bug);
+}
+
+.dark {
+    background: var(--dark);
+    box-shadow: 0 0 20px var(--dark);
+    outline: 0px solid var(--dark);
+}
+
+.dragon {
+    background: var(--dragon);
+    box-shadow: 0 0 20px var(--dragon);
+    outline: 0px solid var(--dragon);
+}
+
+.electric {
+    background: var(--electric);
+    box-shadow: 0 0 20px var(--electric);
+    outline: 0px solid var(--electric);
+}
+
+.fairy {
+    background: var(--fairy);
+    box-shadow: 0 0 20px var(--fairy);
+    outline: 0px solid var(--fairy);
+}
+
+.fighting {
+    background: var(--fighting);
+    box-shadow: 0 0 20px var(--fighting);
+    outline: 0px solid var(--fighting);
+}
+
+.flying {
+    background: var(--flying);
+    box-shadow: 0 0 20px var(--flying);
+    outline: 0px solid var(--flying);
+}
+
+.ghost {
+    background: var(--ghost);
+    box-shadow: 0 0 20px var(--ghost);
+    outline: 0px solid var(--ghost);
+}
+
+.ground {
+    background: var(--ground);
+    box-shadow: 0 0 20px var(--ground);
+    outline: 0px solid var(--ground);
+}
+
+.ice {
+    background: var(--ice);
+    box-shadow: 0 0 20px var(--ice);
+    outline: 0px solid var(--ice);
+}
+
+.normal {
+    background: var(--normal);
+    box-shadow: 0 0 20px var(--normal);
+    outline: 0px solid var(--normal);
+}
+
+.poison {
+    background: var(--poison);
+    box-shadow: 0 0 20px var(--poison);
+    outline: 0px solid var(--poison);
+}
+
+.psychic {
+    background: var(--psychic);
+    box-shadow: 0 0 20px var(--psychic);
+    outline: 0px solid var(--psychic);
+}
+
+.rock {
+    background: var(--rock);
+    box-shadow: 0 0 20px var(--rock);
+    outline: 0px solid var(--rock);
+}
+
+.steel {
+    background: var(--steel);
+    box-shadow: 0 0 20px var(--steel);
+    outline: 0px solid var(--steel);
+}
+
+.water {
+    background: var(--water);
+    box-shadow: 0 0 20px var(--water);
+    outline: 0px solid var(--water);
+}
+
+.fire {
+    background: var(--fire);
+    box-shadow: 0 0 20px var(--fire);
+    outline: 0px solid var(--fire);
+}
+
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 5px solid #ffffff7f; */
+    padding: 10px;
+    width: 15rem;
+    margin: 2rem;
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.5s all ease;
+}
+
+.card-container:hover {
+    outline-width: 4px;
+    outline-offset: 4px ;
+    transition: 0.1s all ease;
+}
+
+/* .card-container::before {
+    position: absolute;
+    background-color: #fff;
+    top: 0;
+    content: "";
+    height: 60%;
+    left: 0;
+    right: 0;
+} */
+
+.img-icono-card {
+    /* background: #ffffff9e; */
+    position: absolute;
+    right: 10%;
+    top: 20%;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-icono-card img {
+    width: 200px;
+}
+
+.card-container h3 {
+    color: #ffffff9e;
+    margin: 0%;
+    font-size: 3rem;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 1rem;
+}
+
+.img-pokemon-container {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+}
+
+.img-pokemon-container img {
+    width: 100%;
+}
+
+.card-container h2 {
+    color: #ffffffc7;
+    font-size: 1.5rem;
+    width: 90%;
+    text-align: center;
+    text-transform: capitalize;
+    margin: 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Quicksand', sans-serif;
+    padding: 8px 0;
+}
