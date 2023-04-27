@@ -50,14 +50,17 @@ export const getPokemonEvolution = async(id) => {
         const datosEvolucion = await fetch(info.evolution_chain.url);
         const evolucion = await datosEvolucion.json();
         console.log(evolucion.chain);
-        let imageUrl = await getImagePokemon(evolucion.chain.species.name);
+        let idObtenido1 = await getIdPokemon(evolucion.chain.species.url);
+        let imageUrl = await getImagePokemon(idObtenido1);
         evoluciones.push({ name: evolucion.chain.species.name, url: imageUrl });
         if(evolucion.chain.evolves_to.length > 0) {
-            let imageUrl = await getImagePokemon(evolucion.chain.evolves_to[0].species.name);
+            let idObtenido2 = await getIdPokemon(evolucion.chain.evolves_to[0].species.url);
+            let imageUrl = await getImagePokemon(idObtenido2);
             evoluciones.push({ name: evolucion.chain.evolves_to[0].species.name, url: imageUrl });
-            
+
             if(evolucion.chain.evolves_to[0].evolves_to.length > 0) {
-                let imageUrl = await getImagePokemon(evolucion.chain.evolves_to[0].evolves_to[0].species.name);
+                let idObtenido3 = await getIdPokemon(evolucion.chain.evolves_to[0].evolves_to[0].species.url);
+                let imageUrl = await getImagePokemon(idObtenido3);
                 evoluciones.push({ name: evolucion.chain.evolves_to[0].evolves_to[0].species.name, url: imageUrl });
             }
         }
@@ -68,8 +71,26 @@ export const getPokemonEvolution = async(id) => {
     }
 }
 
+const getIdPokemon = async (url) => {
+    const response = await fetch(url);
+    const datos = await response.json();
+    // console.log(datos.id);
+    return datos.id;
+}
+
 const getImagePokemon = async (name) => {
     const datos = await getPokemonById(name);
-    const image = datos.sprites.other.home.front_default;
-    return image;
+    
+    if(datos.sprites.other.home.front_default !== null) {
+        const image = datos.sprites.other.home.front_default;
+        return image;
+    } else {
+        if(datos.sprites.other.dream_world.front_default !== null) {
+            const image = datos.sprites.other.dream_world.front_default;
+            return image;
+        } else {
+            const image = datos.sprites.front_default;
+            return image;
+        }
+    }
 }

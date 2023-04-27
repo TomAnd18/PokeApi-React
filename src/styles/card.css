@@ -135,6 +135,17 @@
     outline: 0px solid var(--fire);
 }
 
+.card-false {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 15rem;
+    height: 18rem;
+    margin: 2rem;
+    position: relative;
+}
+
 
 .card-container {
     display: flex;

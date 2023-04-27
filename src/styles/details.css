@@ -35,6 +35,7 @@
     display: flex;
     flex-direction: column;
     position: absolute;
+    justify-content: center;align-items: center;
 }
 
 .details-true-container {
@@ -49,12 +50,12 @@
     width: 80%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
 .info-pokemon-details {
-    width: 60%;
+    width: 55%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -71,6 +72,14 @@
     margin-top: 2rem;
     margin-bottom: 0;
     text-transform: capitalize;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out 0.2s forwards;
+}
+
+.description-pokemon {
+    width: 100%;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out 0.3s forwards;
 }
 
 .description-pokemon p {
@@ -81,28 +90,40 @@
 }
 
 .stats-pokemon-container {
-    width: 90%;
+    width: 100%;
     display: grid;
-    grid-template-columns: 40% 40%;
+    grid-template-columns: 45% 45%;
     justify-content: space-between;
+    /* background: #00000096; */
+    /* background: #ffffffc7;
+    color: #000; */
+    font-weight: bolder;
+    border-radius: 1rem;
+    padding: 0.5rem 0 0.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out 0.4s forwards;
 }
 
 .card-stat {
-    padding: 1rem 2rem;
+    padding: 0.5rem 0;
+    border-radius: 2rem;
+    /* background: #fff; */
     display: flex;
     justify-content: space-between;
     text-transform: capitalize;
 }
 
-.card-stat span {
+/* .card-stat span {
     padding: 0 8px;
-}
+} */
 
 .images-evoluciones-container {
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out 0.5s forwards;
 }
 
 .img-evolucion {
@@ -146,6 +167,9 @@
     border: 5px solid #ffffff9e;
     border-radius: 1rem;
     padding: 3rem 0 4rem 0;
+    opacity: 0;
+    animation: fadeInLeft 0.5s ease-out 0.2s forwards;
+    position: relative;
 }
 
 .img-pokemon-container-details img {
@@ -163,6 +187,8 @@
     filter: grayscale(1);
     position: relative;
     overflow: hidden;
+    opacity: 0;
+    animation: fadeInLeft 0.5s ease-out 0.3s forwards;
 }
 
 .img-pokemon-next-container-details::before {
@@ -177,4 +203,125 @@
 
 .img-pokemon-next-container-details img {
     width: 100%;
+}
+
+.container-tipospokemon {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    top: -40px;
+}
+
+.icono-tipopokemon {
+    width: 40px;
+    height: 40px;
+    margin: 0.5rem;
+    padding: 10px;
+    border-radius: 5rem;
+    border: 3px solid #ffffff9e;
+}
+
+.icono-tipopokemon img {
+    width: 100%;
+}
+
+.btn-anterior-siguiente {
+    background: #3896f7;
+    color: #fff;
+    border: none;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: 0px solid #3896f7;
+    transition: 0.1s all ease;
+}
+
+.btn-anterior-siguiente:not([disabled]):hover {
+    outline-width: 4px;
+    outline-offset: 4px ;
+    transition: 0.1s all ease;
+    transform: scale(1.1);
+}
+
+.btn-anterior-siguiente:disabled {
+    transition: none;
+    background: gray;
+    cursor: not-allowed;
+}
+
+.btn-anterior-siguiente svg {
+    font-size: 2.5rem;
+}
+
+.btn-back-container {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.btn-back {
+    margin: 2rem;
+    background: #FF8811;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1.2rem 1rem 1rem;
+    outline: 0px solid #FF8811;
+    transition: 0.1s all ease;
+}
+
+.btn-back:hover {
+    outline-width: 4px;
+    outline-offset: 4px ;
+    transition: 0.1s all ease;
+    background: #fff;
+    color: #FF8811;
+}
+
+.btn-back svg {
+    font-size: 1.8rem;
+}
+
+.btn-back span {
+    margin-left: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 60px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(60px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+    }
 }
