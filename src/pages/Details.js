@@ -72,12 +72,12 @@ export const Details = () => {
 
     const btnAnterior = () => {
         id--;
-        navigate(`/PokeApi-React/details/${id}`);
+        navigate(`/PokeApi-React/details/${id}/`);
     }
 
     const btnSiguiente = () => {
         id++;
-        navigate(`/PokeApi-React/details/${id}`);
+        navigate(`/PokeApi-React/details/${id}/`);
     }
 
     return (
