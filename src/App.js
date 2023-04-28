@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css';
-// import Nav from './components/Nav';
 import { Home } from './pages/Home';
 import { Details } from "./pages/Details";
 // rafc
@@ -8,11 +7,10 @@ import { Details } from "./pages/Details";
 function App() {
   return (
     <div className="App">
-      <Router>
-        {/* <Nav/> */}
+      <Router basename="/PokeApi-React">
         <Routes>
-          <Route path='/PokeApi-React/' element={ <Home/> }/>
-          <Route path='/PokeApi-React/details/:id/' element={ <Details/> }/>
+          <Route path='/' element={ <Home/> }/>
+          <Route path='/details/:id' element={ <Details/> }/>
         </Routes>
       </Router>
     </div>
