@@ -7,11 +7,13 @@ import { Details } from "./pages/Details";
 function App() {
   return (
     <div className="App">
-      <HashRouter basename="/PokeApi-React">
+      <HashRouter>
+        <Router basename="/PokeApi-React">
           <Routes>
             <Route path='/' element={ <Home/> }/>
             <Route path='/details/:id' element={ <Details/> }/>
           </Routes>
+        </Router>
       </HashRouter>
     </div>
   );
