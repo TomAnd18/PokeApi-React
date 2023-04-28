@@ -233,7 +233,7 @@
 .img-pokemon-next-container-details img {
     width: 100%;
     filter: contrast(0);
-    transition: 2s all ease;
+    transition: 1s all ease;
 }
 
 /* .img-pokemon-next-container-details::before {
@@ -245,10 +245,10 @@
 .img-pokemon-next-container-details img:hover {
     cursor: pointer;
     filter: none;
-    transition: 2s all ease;
+    transition: 1s all ease;
 }
 
-.img-pokemon-next-container-details:hover::before {
+/* .img-pokemon-next-container-details:hover::before {
     content: "Es Pikachu";
     position: absolute;
     left: 0;
@@ -256,7 +256,7 @@
     z-index: 5;
     color: #fff;
     transition: 2s all ease;
-}
+} */
 
 .container-tipospokemon {
     position: absolute;

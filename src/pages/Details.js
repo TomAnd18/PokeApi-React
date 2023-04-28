@@ -72,12 +72,12 @@ export const Details = () => {
 
     const btnAnterior = () => {
         id--;
-        navigate(`/details/${id}`);
+        navigate(`/PokeApi-React/details/${id}`);
     }
 
     const btnSiguiente = () => {
         id++;
-        navigate(`/details/${id}`);
+        navigate(`/PokeApi-React/details/${id}`);
     }
 
     return (
@@ -96,7 +96,7 @@ export const Details = () => {
                     </div>
                     <div className='container-back-details'>
                         <div className='btn-back-container'>
-                            <button className='btn-back' onClick={() => { window.location.href = 'https://tomand18.github.io/PokeApi-React/' }}> <ArrowBackIcon/> <span> Volver </span> </button>
+                            <button className='btn-back' onClick={() => { window.location.href = '/PokeApi-React/' }}> <ArrowBackIcon/> <span> Volver </span> </button>
                         </div>
                         <div className='details-true-container'>
                             <div className='btn-anterior-container'>
