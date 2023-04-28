@@ -1,8 +1,8 @@
 {
   "name": "pokeapi-react",
   "version": "0.1.0",
-  "private": true,
   "homepage": "https://TomAnd18.github.io/PokeApi-React",
+  "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",

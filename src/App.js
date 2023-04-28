@@ -11,8 +11,8 @@ function App() {
       <Router>
         {/* <Nav/> */}
         <Routes>
-          <Route path='/' element={ <Home/> }/>
-          <Route path='/details/:id' element={ <Details/> }/>
+          <Route exact path='/PokeApi-React/' element={ <Home/> }/>
+          <Route exact path='/PokeApi-React/details/:id' element={ <Details/> }/>
         </Routes>
       </Router>
     </div>
