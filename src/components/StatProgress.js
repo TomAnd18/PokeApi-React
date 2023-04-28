@@ -21,9 +21,16 @@ export default function StatProgress({ numero }) {
     const [porcentaje, setPorcentaje] = useState(0);
 
     const getPorcentaje = () => {
-        const calculo = (numero * 100) / 255;
-        return calculo;
-    }
+      const meta = (numero * 100) / 255;
+      let valor = 0;
+      const intervalo = setInterval(() => {
+        valor += 1;
+        if (valor >= meta) {
+          clearInterval(intervalo);
+        }
+        setPorcentaje(valor);
+      }, 40);
+    };    
 
     useEffect(() => {
         getPorcentaje();
@@ -31,7 +38,7 @@ export default function StatProgress({ numero }) {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <BorderLinearProgress variant="determinate" value={getPorcentaje()}/>
+            <BorderLinearProgress variant="determinate" value={porcentaje}/>
         </Box>
     );
 }

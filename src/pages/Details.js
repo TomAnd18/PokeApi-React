@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getPokemonById, getDescriptionPokemon, getPokemonEvolution } from '../services/api';
-import { icono } from "../icons/icons";
+import { getPokemonById, getDescriptionPokemon, getPokemonEvolution} from '../services/api';
+// import { icono } from "../icons/icons";
 import '../styles/details.css';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
@@ -10,13 +10,24 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import StatProgress from '../components/StatProgress';
+import { CardsDetails } from '../components/CardsDetails';
+import ExperienceProgress from '../components/ExperienceProgress';
 
 export const Details = () => {
     const [pokemon, setPokemon] = useState({});
-    const [pokemonNext, setNextPokemon] = useState({});
+    // const [pokemonNext, setNextPokemon] = useState({});
     const [loading, setLoading] = useState(true);
     const [descripcion, setDescripcion] = useState([]);
     const [evolucion, setEvolucion] = useState([]);
+    const statsName =  [
+        'PS',
+        'Ataque',
+        'Defensa',
+        'Ataque Especial',
+        'Defensa Especial',
+        'velocidad',
+    ];
+    const [numXP, setNumXP] = useState(0);
     let {id} = useParams();
     let navigate = useNavigate();
 
@@ -25,19 +36,35 @@ export const Details = () => {
         setLoading(true);
 
         const datos = await getPokemonById(isID);
-        const description = await getDescriptionPokemon(isID);
-        const datosNext = await getPokemonById(parseInt(isID)+1);
+        const description = await getDescriptionPokemon(datos.species.url);
+        // const datosNext = await getPokemonById(parseInt(isID)+1);
         console.log(datos);
         setPokemon(datos);
         setDescripcion(description);
-        setNextPokemon(datosNext);
+        // setNextPokemon(datosNext);
 
-        const evoluciones = await getPokemonEvolution(id);
+        const evoluciones = await getPokemonEvolution(datos.species.url);
         setEvolucion(evoluciones);
         console.log(evoluciones);
 
+        getNumeroXP(datos.base_experience);
+
         setLoading(false);
     }
+
+    const getNumeroXP = useCallback((xp) => {
+        const meta = xp;
+        let space = xp > 300 ? 4 : 3;
+        let valor = 0;
+        const intervalo = setInterval(() => {
+          valor += space;
+          if (valor >= meta) {
+            clearInterval(intervalo);
+          }
+          setNumXP(valor);
+        }, 15);
+    }, [setNumXP]);
+      
 
     useEffect(() => {
         loadPokemon(id);
@@ -53,13 +80,6 @@ export const Details = () => {
         navigate(`/details/${id}`);
     }
 
-    // const getImagePokemon = async (name) => {
-    //     const datosPokemon = await getPokemonById(name);
-    //     const img = datosPokemon.sprites.other.home.front_default;
-    //     console.log(img);
-    // }
-
-
     return (
     <>
         {
@@ -71,7 +91,7 @@ export const Details = () => {
                 </div>
             :
                 <div className='container-global-details'>
-                    <div style={{backgroundImage: `url(${pokemon.sprites.other.dream_world.front_default})`, backgroundSize: 'auto 90%', backgroundPosition: 'bottom left', backgroundRepeat: 'no-repeat'}} className='details-container'>
+                    <div style={{backgroundImage: `url(${pokemon.sprites.other.dream_world.front_default})`}} className='details-container'>
                         
                     </div>
                     <div className='container-back-details'>
@@ -79,7 +99,7 @@ export const Details = () => {
                             <button className='btn-back' onClick={() => { window.location.href = '/' }}> <ArrowBackIcon/> <span> Volver </span> </button>
                         </div>
                         <div className='details-true-container'>
-                            <div>
+                            <div className='btn-anterior-container'>
                                 <button className='btn-anterior-siguiente' disabled={ id > 1 ? false : true } onClick={btnAnterior}> <KeyboardDoubleArrowLeftIcon/> </button>
                             </div>
                             <div className='container-detalles-pokemon'>
@@ -89,16 +109,31 @@ export const Details = () => {
                                         descripcion.length > 0 ?
                                             <div className='description-pokemon'>
                                                 <p> { descripcion[0].flavor_text } </p>
-                                                <p> { descripcion[2].flavor_text } </p>
+                                                {/* <p> { descripcion[2].flavor_text } </p> */}
                                             </div>
                                         : ''
                                     }
+                                    <div className='experience-container'>
+                                        <span className='ex-name-container'> Experiencia </span>
+                                        <div className='ex-circle-num-container'>
+                                            <ExperienceProgress numero={pokemon.base_experience}/>
+                                            <span className='ex-num'> { numXP } </span>
+                                        </div>
+                                    </div>
                                     <div className='stats-pokemon-container'>
+                                            <div className='card-stat'>
+                                                <span style={{width: '60%'}}> Peso </span>
+                                                <span style={{width: '30%', textAlign: 'right', textTransform: 'none', letterSpacing: '1px'}}> { pokemon.weight / 10 } kg </span>
+                                            </div>
+                                            <div className='card-stat'>
+                                                <span style={{width: '60%'}}> Altura </span>
+                                                <span style={{width: '30%', textAlign: 'right', textTransform: 'none', letterSpacing: '1px'}}> { pokemon.height / 10 } m </span>
+                                            </div>
                                         {
                                             pokemon.stats.map((s, index) => {
                                                 return (
                                                     <div className='card-stat' key={index}>
-                                                        <span style={{width: '50%'}}> { s.stat.name } </span>
+                                                        <span style={{width: '50%'}}> { statsName[index]} </span>
                                                         <div style={{width: '30%', display: 'flex', alignItems: 'center'}}> <StatProgress numero={s.base_stat}/> </div>
                                                         <span style={{width: '10%', textAlign: 'right'}}> { s.base_stat } </span>
                                                     </div>
@@ -115,7 +150,7 @@ export const Details = () => {
                                                         {
                                                             (index + 1) !== evolucion.length
                                                                 ?
-                                                                    <ArrowCircleRightIcon style={{fontSize: '2rem'}}/>
+                                                                    <ArrowCircleRightIcon id='arrow-evolution' style={{fontSize: '2rem'}}/>
                                                                 :
                                                                     ''
                                                         }
@@ -125,34 +160,10 @@ export const Details = () => {
                                         }
                                     </div>
                                 </div>
-                                <div className={`card-view-pokemon-details`}>
-                                    <div className={`img-pokemon-container-details ${pokemon.types[0].type.name}`}>
-                                        {
-                                            pokemon.sprites.other.home.front_default !== null ?
-                                                <img alt={pokemon.name} src={pokemon.sprites.other.home.front_default}></img>
-                                            :
-                                                <img alt={pokemon.name} src={pokemon.sprites.front_default}></img>
-                                        }
-                                        <div className='container-tipospokemon'>
-                                            {
-                                                pokemon.types.map((tipo, index) => {
-                                                    return <div className={`icono-tipopokemon ${tipo.type.name}`}> <img alt='tipo' src={icono(tipo.type.name)}></img> </div>;
-                                                })
-                                            }
-                                        </div>
-                                    </div>
-                                    <div className={`img-pokemon-next-container-details ${pokemon.types[0].type.name}`}>
-                                        {
-                                            pokemonNext.sprites.other.home.front_default !== null ?
-                                                <img alt={pokemonNext.name} src={pokemonNext.sprites.other.home.front_default}></img>
-                                            :
-                                                <img alt={pokemonNext.name} src={pokemonNext.sprites.front_default}></img>
-                                        }
-                                    </div>
-                                </div>
+                                <CardsDetails pokemon={pokemon}/>
                             </div>
-                            <div>
-                                <button className='btn-anterior-siguiente' disabled={ id < 1000 ? false : true } onClick={btnSiguiente}> <KeyboardDoubleArrowRightIcon/> </button>
+                            <div className='btn-siguiente-container'>
+                                <button className='btn-anterior-siguiente' disabled={ id < 10270 ? false : true } onClick={btnSiguiente}> <KeyboardDoubleArrowRightIcon/> </button>
                             </div>
                         </div>
                     </div>

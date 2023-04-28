@@ -230,3 +230,33 @@
     font-family: 'Quicksand', sans-serif;
     padding: 8px 0;
 }
+
+@media screen and (max-width: 991px) {
+    .card-container {
+        padding: 5px;
+        width: 10rem;
+        margin: 1rem;
+        border-radius: 1rem;
+    }
+
+    .card-false {
+        padding: 5px;
+        width: 10rem;
+        height: 13rem;
+        margin: 1rem;
+    }
+
+    .card-container h3 {
+        font-size: 1.8rem;
+        left: 0.5rem;
+    }
+
+    .card-container h2 {
+        font-size: 1.1rem;
+        padding: 5px 0;
+    }
+
+    .img-icono-card img {
+        width: 120px;
+    }
+}

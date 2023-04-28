@@ -9,8 +9,10 @@
 
 .cards-container-home {
     width: 80%;
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: auto auto auto auto;
     justify-content: center;
 }
 
@@ -24,4 +26,15 @@
 .btn-more-pokemones {
     font-size: 2rem;
     margin: 2rem;
+}
+
+
+@media screen and (max-width: 991px) {
+    .cards-container-home {
+        width: 90%;
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: center;
+    }
+    
 }

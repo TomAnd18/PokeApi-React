@@ -30,9 +30,9 @@ export const getPokemonById = async(id) => {
     }
 }
 
-export const getDescriptionPokemon = async(id) => {
+export const getDescriptionPokemon = async(enlace) => {
     try {
-        const response = await fetch(`${url}pokemon-species/${id}`);
+        const response = await fetch(enlace);
         const datos = await response.json();
         const description = await datos.flavor_text_entries?.filter(entry => entry.language.name === "es");
         console.log(description);
@@ -42,10 +42,10 @@ export const getDescriptionPokemon = async(id) => {
     }
 }
 
-export const getPokemonEvolution = async(id) => {
+export const getPokemonEvolution = async(enlace) => {
     const evoluciones = [];
     try {
-        const response = await fetch(`${url}pokemon-species/${id}`);
+        const response = await fetch(enlace);
         const info = await response.json();
         const datosEvolucion = await fetch(info.evolution_chain.url);
         const evolucion = await datosEvolucion.json();
