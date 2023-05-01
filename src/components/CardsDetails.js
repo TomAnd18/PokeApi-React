@@ -8,16 +8,17 @@ export const CardsDetails = ({ pokemon }) => {
     const [pokemonNext, setNextPokemon] = useState({});
     const [loading, setLoading] = useState(true);
 
-    const getNextPokemon = async () => {
-        setLoading(true);
-
-        const datosNext = await getPokemonById(parseInt(pokemon.id)+1);
-        setNextPokemon(datosNext);
-
-        setLoading(false);
-    }
-
+    
     useEffect(() => {
+        const getNextPokemon = async () => {
+            setLoading(true);
+    
+            const datosNext = await getPokemonById(parseInt(pokemon.id)+1);
+            setNextPokemon(datosNext);
+    
+            setLoading(false);
+        }
+        
         getNextPokemon();
     }, [pokemon])
 
@@ -54,6 +55,7 @@ export const CardsDetails = ({ pokemon }) => {
                             </div>
                         }
                     </div>
+                    <p className='viewname-nextpokemon'> Es { pokemonNext.name } </p>
                 </div>
             </div>
         )

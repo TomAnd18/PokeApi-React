@@ -104,6 +104,7 @@
 .ex-name-container {
     font-size: 1.5rem;
     margin-right: 1rem;
+    font-weight: bold;
 }
 
 .ex-circle-num-container {
@@ -150,10 +151,24 @@
 .images-evoluciones-container {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     opacity: 0;
     animation: fadeInUp 0.5s ease-out 0.5s forwards;
+}
+
+.name-evolution p {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.all-evolutions-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .img-evolucion {
@@ -233,19 +248,28 @@
 .img-pokemon-next-container-details img {
     width: 100%;
     filter: contrast(0);
+    transition: 0.7s all ease;
+}
+
+.img-pokemon-next-container-details img:hover {
+    cursor: none;
+    filter: none;
     transition: 1s all ease;
 }
 
-/* .img-pokemon-next-container-details::before {
-    content: "";
-    
-    transition: 2s all ease;
-} */
+.viewname-nextpokemon {
+    position: absolute;
+    color: #181819;
+    font-size: 1.1rem;
+    bottom: -30px;
+    transition: 0.5s all ease;
+    text-transform: capitalize;
+    font-family: 'Quicksand', sans-serif;
+}
 
-.img-pokemon-next-container-details img:hover {
-    cursor: pointer;
-    filter: none;
-    transition: 1s all ease;
+.img-pokemon-next-container-details img:hover ~ .viewname-nextpokemon {
+    color: #fff;
+    transition: 0.5s all ease;
 }
 
 /* .img-pokemon-next-container-details:hover::before {
@@ -292,8 +316,9 @@
 #pokemonimg-carddetails {
     width: 150px;
     filter: none;
-    rotate: -5deg;
+    rotate: -3deg;
     cursor: default;
+    padding-bottom: 1rem;
 }
 
 #questionimg-carddetails {
@@ -410,7 +435,7 @@
         height: auto;
         padding-bottom: 2rem;
         padding-top: 8rem;
-        padding-bottom: 450px;
+        /* padding-bottom: 450px; */
     }
 
     .details-true-container {
@@ -450,10 +475,11 @@
     }
 
     .img-pokemon-next-container-details {
-        position: absolute;
+        /* position: absolute;
         bottom: -450px;
         margin-bottom: 2rem;
-        width: 60%;
+        width: 60%; */
+        display: none;
     }
 
     .btn-anterior-container {
@@ -498,7 +524,11 @@
         margin: 1rem 0;
     }
 
-    .images-evoluciones-container {
+    /* .images-evoluciones-container {
+        flex-direction: column;
+    } */
+
+    .all-evolutions-container {
         flex-direction: column;
     }
 
@@ -514,12 +544,13 @@
         rotate: 90deg;
     }
 
-    .btn-back-container {
-        display: flex;
-        justify-content: center;
-    }
-
     .btn-back {
         margin: 1rem;
+        padding: 0.6rem 0.8rem 0.6rem 0.6rem;
+    }
+
+    .name-evolution p {
+        margin-bottom: 2rem;
+        margin-top: 2rem;
     }
 }

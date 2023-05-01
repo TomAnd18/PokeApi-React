@@ -20,20 +20,21 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 export default function StatProgress({ numero }) {
     const [porcentaje, setPorcentaje] = useState(0);
 
-    const getPorcentaje = () => {
-      const meta = (numero * 100) / 255;
-      let valor = 0;
-      const intervalo = setInterval(() => {
-        valor += 1;
-        if (valor >= meta) {
-          clearInterval(intervalo);
-        }
-        setPorcentaje(valor);
-      }, 40);
-    };    
-
+    
     useEffect(() => {
-        getPorcentaje();
+      const getPorcentaje = () => {
+        const meta = (numero * 100) / 255;
+        let valor = 0;
+        const intervalo = setInterval(() => {
+          valor += 1;
+          if (valor >= meta) {
+            clearInterval(intervalo);
+          }
+          setPorcentaje(valor);
+        }, 40);
+      };
+      
+      getPorcentaje();
     },[numero])
 
     return (
@@ -42,27 +43,3 @@ export default function StatProgress({ numero }) {
         </Box>
     );
 }
-
-// import React, { useEffect, useState } from 'react';
-// import Box from '@mui/material/Box';
-// import LinearProgress from '@mui/material/LinearProgress';
-
-// export default function StatProgress({ numero }) {
-//     const [progress, setProgress] = useState(0);
-
-//     const getPorcentaje = () => {
-//         const calculo = (numero * 100) / 255;
-//         setProgress(calculo);
-//     }
-
-//     useEffect(() => {
-//         getPorcentaje();
-//     }, [numero]);
-
-//     return (
-//         <Box sx={{ width: '100%'}}>
-//             <LinearProgress variant="determinate" value={progress} />
-//         </Box>
-//     );
-// }
-

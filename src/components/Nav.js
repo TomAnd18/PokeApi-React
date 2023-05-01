@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import '../styles/nav.css';
 import logo from '../images/pokedex_logo.jpg';
+import { Search } from '../components/Search';
 
-export default function Nav() {
+export default function Nav({ nameSearch, borrarBusqueda }) {
 
     const headerRef = useRef(null);
 
@@ -22,21 +23,21 @@ export default function Nav() {
         };
     }, []);
 
+    const redireccionar = () => {
+        // localStorage.removeItem("limite");
+        window.location.href = '/PokeApi-React/';
+    }
+
 
     return (
         <>
             <header ref={headerRef} className='header-nav'>
                 <div className='container-logo-nav'>
-                    <img className='logo-nav' alt='logo' src={logo}></img>
+                    <img onClick={ redireccionar } className='logo-nav' alt='logo' src={logo}></img>
                     {/* <a className='name-logo-nav' href='#!'>Pokedex</a> */}
                 </div>
-                <nav className='nav-nav'>
-                    <ul className='nav-wrap'>
-                        <li> <a href='#!'> Buscar </a> </li>
-                    </ul>
-                    {/* <div className='menu-nav'>
-                        <Menu/>
-                    </div> */}
+                <nav className='container-search-home'>
+                    <Search nameSearch={nameSearch} borrarBusqueda={borrarBusqueda}/>
                 </nav>
             </header>
         </>

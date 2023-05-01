@@ -142,22 +142,27 @@ export const Details = () => {
                                         }
                                     </div>
                                     <div className='images-evoluciones-container'>
-                                        {
-                                            evolucion.map((e, index) => {
-                                                return (
-                                                    <>
-                                                        <div className='img-evolucion' key={index}> <img alt='evolution' src={ e.url }></img> <p className={ e.name === pokemon.name ? 'pokemon-seleccionado' : '' }> { e.name } </p> </div>
-                                                        {
-                                                            (index + 1) !== evolucion.length
-                                                                ?
-                                                                    <ArrowCircleRightIcon id='arrow-evolution' style={{fontSize: '2rem'}}/>
-                                                                :
-                                                                    ''
-                                                        }
-                                                    </>
-                                                )
-                                            })
-                                        }
+                                        <div className='name-evolution'>
+                                            <p> Evoluciones </p>
+                                        </div>
+                                        <div className='all-evolutions-container'>
+                                            {
+                                                evolucion.map((e, index) => {
+                                                    return (
+                                                        <>
+                                                            <div className='img-evolucion' key={index}> <img alt='evolution' src={ e.url }></img> <p className={ e.name === pokemon.name ? 'pokemon-seleccionado' : '' }> { e.name } </p> </div>
+                                                            {
+                                                                (index + 1) !== evolucion.length
+                                                                    ?
+                                                                        <ArrowCircleRightIcon id='arrow-evolution' style={{fontSize: '2rem'}}/>
+                                                                    :
+                                                                        ''
+                                                            }
+                                                        </>
+                                                    )
+                                                })
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                                 <CardsDetails pokemon={pokemon}/>

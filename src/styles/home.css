@@ -1,19 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+
 .container-home {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 5rem;
+    margin-top: 8rem;
 }
 
 .cards-container-home {
     width: 80%;
-    /* display: flex;
-    flex-wrap: wrap; */
-    display: grid;
-    grid-template-columns: auto auto auto auto;
+    /* display: grid;
+    grid-template-columns: auto auto auto auto; */
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    margin-top: 2rem;
 }
 
 .btn-more-container {
@@ -26,15 +29,133 @@
 .btn-more-pokemones {
     font-size: 2rem;
     margin: 2rem;
+    border-radius: 1rem;
+    background: #FFD400;
+    color: #fff;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    border: none;
+    outline: 0px solid #FFD400;
+    transition: 0.1s all ease;
+}
+
+.btn-more-pokemones:hover {
+    outline-width: 4px;
+    outline-offset: 4px ;
+    transition: 0.1s all ease;
+}
+
+.container-filter {
+    width: 65%;
+}
+
+.item-filter {
+    padding: 0.4rem 0.8rem 0.5rem 0.8rem;
+    margin: 0.5rem 0.5rem;
+    width: 5rem;
+    text-align: center;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 8px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    box-shadow: none !important;
+    /* border: 1px solid #fff; */
+    text-transform: capitalize;
+}
+
+.item-filter:hover {
+    cursor: pointer;
+    /* background: #fff !important; */
+    /* color: #000; */
+    /* border: 1px solid #15171b3b; */
+    filter: drop-shadow(0px 3px 3px black);
+}
+
+#tabla-container {
+    box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.12) !important;
+    padding: 0.5rem 0;
+}
+
+/* Estilos para la barra de desplazamiento */
+#tabla-container::-webkit-scrollbar {
+    height: 0px; /* altura de la barra de desplazamiento */
+    background-color: #f1f1f146; /* color de fondo de la barra de desplazamiento */
+}
+  
+/* Estilos para la zona de arrastre de la barra de desplazamiento */
+#tabla-container::-webkit-scrollbar-thumb {
+    background-color: #00000048; /* color del fondo de la zona de arrastre */
+    border-radius: 5px; /* radio de la zona de arrastre */
+}
+
+#searching-pokemon-container {
+    width: 30%;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#searching-pokemon-container p {
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Bungee Spice', cursive;
+    font-weight: bold;
+}
+
+.nofound-img {
+    width: 60%;
+}
+
+.nofound-img img {
+    width: 100%;
+}
+
+.btn-limpiar-busqueda {
+    color: #0000009c;
+    margin-right: 5px;
+}
+
+.btn-limpiar-busqueda:hover {
+    cursor: pointer;
+    color: rgba(255, 0, 0, 0.658);
 }
 
 
+
 @media screen and (max-width: 991px) {
+    .container-home {
+        margin-top: 6rem;
+    }
+
     .cards-container-home {
         width: 90%;
-        display: grid;
-        grid-template-columns: auto auto;
+        /* display: grid;
+        grid-template-columns: auto auto; */
         justify-content: center;
     }
-    
+
+    .btn-more-pokemones {
+        font-size: 1rem;
+        margin: 1rem;
+        border-radius: 8px;
+        padding: 0.4rem 1.8rem;
+    }
+
+    .container-filter {
+        width: 90%;
+    }
+
+    .item-filter {
+        padding: 0.3rem 0.7rem 0.4rem 0.7rem;
+        margin: 0.4rem 0.4rem;
+        width: 3rem;
+        font-size: 0.8rem;
+    }
+
+    #searching-pokemon-container {
+        width: 100%;
+    }
 }
