@@ -1,7 +1,7 @@
 {
   "name": "pokeapi-react",
   "version": "0.1.0",
-  "homepage": "https://gh-pages--steady-bienenstitch-547504.netlify.app",
+  "homepage": "https://TomAnd18.github.io/PokeApi-React",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
