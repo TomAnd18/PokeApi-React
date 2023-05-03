@@ -96,7 +96,7 @@ export const Details = () => {
                     </div>
                     <div className='container-back-details'>
                         <div className='btn-back-container'>
-                            <button className='btn-back' onClick={() => { window.location.href = '/PokeApi-React/' }}> <ArrowBackIcon/> <span> Volver </span> </button>
+                            <button className='btn-back' onClick={() => { window.location.href = '/' }}> <ArrowBackIcon/> <span> Volver </span> </button>
                         </div>
                         <div className='details-true-container'>
                             <div className='btn-anterior-container'>

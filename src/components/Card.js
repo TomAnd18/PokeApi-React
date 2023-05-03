@@ -33,7 +33,7 @@ export const Card = ({ url }) => {
                         <Skeleton variant="text" style={{width: '60%', height: '10%', position: 'absolute', bottom: '25px', left: 'center'}} sx={{ fontSize: '1rem' }} />
                     </Stack>
                 :
-                    <div onClick={() => { window.location.href = '/PokeApi-React/details/'+pokemon.id }} className={`card-container ${pokemon.types[0].type.name}`}>
+                    <div onClick={() => { window.location.href = '/details/'+pokemon.id }} className={`card-container ${pokemon.types[0].type.name}`}>
                         <h3> { '#' + pokemon.id } </h3>
                         <div className='img-icono-card'> <img alt='tipo' src={icono(pokemon.types[0].type.name)}></img> </div>
                         <div className='img-pokemon-container'>
