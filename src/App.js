@@ -6,7 +6,7 @@ import { Details } from "./pages/Details";
 function App() {
   return (
     <div className="App">
-        <Router basename="https://gh-pages--steady-bienenstitch-547504.netlify.app">
+        <Router>
           <Routes>
               <Route path='/' element={ <Home/> }/>
               <Route path='/details/:id' element={ <Details/> }/>
