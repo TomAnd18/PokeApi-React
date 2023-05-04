@@ -24,8 +24,7 @@ export default function Nav({ nameSearch, borrarBusqueda }) {
     }, []);
 
     const redireccionar = () => {
-        // localStorage.removeItem("limite");
-        window.location.href = '/PokeApi-React/';
+        window.location.href = '/';
     }
 
 

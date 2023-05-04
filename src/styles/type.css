@@ -1,0 +1,44 @@
+.container-global-type {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: linear-gradient(to bottom, #66ccff, #5effb9); */
+    background-attachment: fixed;
+}
+
+.nametype-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+}
+
+.nametype-container p {
+    color: #fff;
+    font-size: 3rem;
+    font-family: 'Quicksand', sans-serif;
+    text-transform: capitalize;
+    font-weight: bold;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+.container-pokemonestype {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8rem;
+}
+
+@media screen and (max-width: 991px) {
+    .container-pokemonestype {
+        width: 100%;
+    }
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getPokemones, getPokemonById } from '../services/api';
+import { getPokemones, getPokemonById, getokemonesByType } from '../services/api';
 import { Card } from '../components/Card';
 import '../styles/home.css';
 import Nav from '../components/Nav';
@@ -11,13 +11,11 @@ import nofound from '../images/no-ncontrado.png';
 export const Home = () => {
     const [pokemones,setPokemones] = useState([]);
     const [offset, setOffset] = useState(0);
-    // const [limit, setLimit] = useState(12);
     const [info, setInfo] = useState('');
     const [encontrado, setEcontrado] = useState(false);
     const [searching, setSearching] = useState(false);
 
     const showPokemones = async () => {
-        // const getLimite = JSON.parse(localStorage.getItem("limite")) || parseInt(12);
         const datos = await getPokemones(offset);
         setPokemones([...pokemones, ...datos.results]);
         console.log(datos.results);
@@ -29,9 +27,6 @@ export const Home = () => {
     
     const loadMorePokemones = () => {
         setOffset(offset + 12);
-        // let newLimit = limit + 12;
-        // setLimit(newLimit);
-        // localStorage.setItem("limite", JSON.stringify(newLimit));
     }
 
     const pokemonSearching = async (name) => {

@@ -94,3 +94,23 @@ const getImagePokemon = async (name) => {
         }
     }
 }
+
+export const getokemonesByType = async (tipo) => {
+    try {
+        const response = await fetch(`${url}type`);
+        const datos = await response.json();
+        const tipos = await datos.results;
+
+        const getType = tipos.filter((type) => type.name === tipo )
+
+        const data = await fetch(getType[0].url);
+        const result = await data.json();
+        const pokemones = result.pokemon;
+
+        console.log(pokemones);
+
+        return pokemones;
+    } catch (error) {
+        console.log(error);
+    }
+}

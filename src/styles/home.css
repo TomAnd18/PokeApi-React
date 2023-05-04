@@ -56,7 +56,7 @@
     text-align: center;
     color: #fff;
     font-size: 1rem;
-    border-radius: 8px;
+    border-radius: 2rem;
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
     box-shadow: none !important;
@@ -120,7 +120,7 @@
 
 .btn-limpiar-busqueda:hover {
     cursor: pointer;
-    color: rgba(255, 0, 0, 0.658);
+    color: #000;
 }
 
 
@@ -131,7 +131,7 @@
     }
 
     .cards-container-home {
-        width: 90%;
+        width: 100%;
         /* display: grid;
         grid-template-columns: auto auto; */
         justify-content: center;
