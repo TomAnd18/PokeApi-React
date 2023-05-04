@@ -35,9 +35,9 @@ export default function Nav({ nameSearch, borrarBusqueda }) {
                     <img onClick={ redireccionar } className='logo-nav' alt='logo' src={logo}></img>
                     {/* <a className='name-logo-nav' href='#!'>Pokedex</a> */}
                 </div>
-                <nav className='container-search-home'>
+                <div className='container-search-home'>
                     <Search nameSearch={nameSearch} borrarBusqueda={borrarBusqueda}/>
-                </nav>
+                </div>
             </header>
         </>
     )

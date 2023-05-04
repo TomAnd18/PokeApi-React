@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 export const Search = ({ nameSearch, borrarBusqueda }) => {
-    const [buscar, setBuscar] = useState('');
+    const [buscar, setBuscar] = useState("");
     const [borrar, setBorrar] = useState(false);
 
     const handleChange = (event) => {
@@ -73,22 +73,24 @@ export const Search = ({ nameSearch, borrarBusqueda }) => {
 
     return (
         <>
-            <Search id='search-input'>
-                <form style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}} onSubmit={handleSubmit}>
-                    <SearchIconWrapper>
+            {/* <Search id='search-input'></Search> */}
+            <div id='search-input'>
+                <form style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative'}} onSubmit={handleSubmit}>
+                    <SearchIconWrapper style={{height: 'auto'}}>
                         <SearchIcon />
                     </SearchIconWrapper>
-                    <StyledInputBase
+                    <input
                         placeholder="Buscar pokemon..."
-                        autoComplete="off"
+                        id="buscar"
+                        name="buscar"
                         value={buscar}
-                        onChange={handleChange}
+                        onChange={ (e) => handleChange(e)}
                         style={{width: '100%', fontWeight: 'bold'}}
-                        autoFocus
+                        className='inputsearchpokemon'
                     />
-                    <HighlightOffIcon onClick={limpiarBusqueda} className='btn-limpiar-busqueda'/>
+                    <HighlightOffIcon style={{position: 'absolute', right: '0'}} onClick={limpiarBusqueda} className='btn-limpiar-busqueda'/>
                 </form>
-            </Search>
+            </div>
         </>
     )
 }
