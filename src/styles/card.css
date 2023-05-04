@@ -134,9 +134,9 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    width: 15rem;
+    width: 14rem;
     height: 18rem;
-    margin: 2rem;
+    margin: 1rem;
     position: relative;
 }
 
@@ -235,8 +235,8 @@
 
     .card-false {
         padding: 5px;
-        width: 10rem;
-        height: 13rem;
+        width: 8rem;
+        height: 12rem;
         margin: 1rem;
     }
 

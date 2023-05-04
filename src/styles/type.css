@@ -8,24 +8,40 @@
     background-attachment: fixed;
 }
 
+#nav-type {
+    width: 100%;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0 !important;
+}
+
 .nametype-container {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    z-index: 3;
-    top: 0;
+    /* z-index: 3; */
 }
 
-.nametype-container p {
+.nametype-container h1 {
     color: #fff;
-    font-size: 3rem;
+    font-size: 1.5rem;
     font-family: 'Quicksand', sans-serif;
     text-transform: capitalize;
     font-weight: bold;
-    margin: 0;
-    padding: 1rem 0;
+}
+
+.container-btn-name-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-close-type {
+    position: absolute;
+    left: 2rem;
+    /* z-index: 4; */
 }
 
 .container-pokemonestype {
@@ -34,7 +50,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 8rem;
+    margin-top: 4rem;
 }
 
 @media screen and (max-width: 991px) {
