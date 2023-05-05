@@ -85,7 +85,7 @@ export const Search = ({ nameSearch, borrarBusqueda }) => {
                         name="buscar"
                         value={buscar}
                         onChange={ (e) => handleChange(e)}
-                        style={{width: '100%', fontWeight: 'bold'}}
+                        style={{width: '100%'}}
                         className='inputsearchpokemon'
                     />
                     <HighlightOffIcon style={{position: 'absolute', right: '0'}} onClick={limpiarBusqueda} className='btn-limpiar-busqueda'/>

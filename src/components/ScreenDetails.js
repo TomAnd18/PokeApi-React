@@ -9,7 +9,7 @@ import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArro
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { CircularProgress, Box } from '@mui/material';
 
-export const ScreenDetails = ({ id }) => {
+export const ScreenDetails = ({ id, showBotones }) => {
     const [myID, setMyID] = useState(id);
     const [pokemon, setPokemon] = useState({});
     const [loading, setLoading] = useState(true);
@@ -61,12 +61,10 @@ export const ScreenDetails = ({ id }) => {
     }, [myID]);
 
     const btnAnterior = () => {
-        
         setMyID(myID-1);
     }
 
     const btnSiguiente = () => {
-        
         setMyID(myID+1);
     }
 
@@ -86,7 +84,7 @@ export const ScreenDetails = ({ id }) => {
                     </div>
                     <div className='container-back-details'>
                         <div className='details-true-container'>
-                            <div className='btn-anterior-container'>
+                            <div style={{ display: showBotones ? 'flex' : 'none' }} className='btn-anterior-container'>
                                 <button className='btn-anterior-siguiente' disabled={ myID > 1 ? false : true } onClick={btnAnterior}> <KeyboardDoubleArrowLeftIcon/> </button>
                             </div>
                             <div className='container-detalles-pokemon'>
@@ -153,7 +151,7 @@ export const ScreenDetails = ({ id }) => {
                                 </div>
                                 <CardsDetails pokemon={pokemon}/>
                             </div>
-                            <div className='btn-siguiente-container'>
+                            <div style={{ display: showBotones ? 'flex' : 'none' }} className='btn-siguiente-container'>
                                 <button className='btn-anterior-siguiente' disabled={ myID < 10270 ? false : true } onClick={btnSiguiente}> <KeyboardDoubleArrowRightIcon/> </button>
                             </div>
                         </div>

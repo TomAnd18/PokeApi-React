@@ -4,8 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background: linear-gradient(to bottom, #66ccff, #5effb9); */
     background-attachment: fixed;
+    position: relative;
 }
 
 #nav-type {
@@ -21,12 +21,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* z-index: 3; */
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    padding: 0.5rem 0;
 }
 
 .nametype-container h1 {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-family: 'Quicksand', sans-serif;
     text-transform: capitalize;
     font-weight: bold;
@@ -44,17 +47,62 @@
     /* z-index: 4; */
 }
 
+.btnback-container-type {
+    width: auto;
+    position: absolute;
+    left: 20px;
+}
+
+.btnback-type {
+    padding: 0.7rem 1.5rem 0.6rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+    border: none;
+    background: #FF8811;
+    color: #fff;
+    outline: 0px solid #FF8811;
+    transition: 0.1s all ease;
+}
+
+.btnback-type:hover {
+    outline-width: 4px;
+    transition: 0.1s all ease;
+    background: #fff;
+    color: #FF8811;
+    cursor: pointer;
+}
+
+.btnback-type span {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
 .container-pokemonestype {
     width: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 4rem;
+    margin-top: 8rem;
 }
 
 @media screen and (max-width: 991px) {
     .container-pokemonestype {
         width: 100%;
+    }
+
+    .nametype-container {
+        padding: 0.2rem 0;
+    }
+
+    .btnback-type {
+        padding: 0.6rem;
+    }
+
+    .btnback-type span {
+        display: none;
     }
 }

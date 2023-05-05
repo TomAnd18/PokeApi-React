@@ -28,6 +28,27 @@ export const Filtro = () => {
     'steel'
   ]
 
+  const tiposES = {
+    bug: 'bicho',
+    water: 'agua',
+    grass: 'planta',
+    fire: 'fuego',
+    normal: 'normal',
+    poison: 'veneno',
+    electric: 'eléctrico',
+    ground: 'tierra',
+    fairy: 'hada',
+    fighting: 'lucha',
+    psychic: 'psíquico',
+    ghost: 'fantasma',
+    rock: 'roca',
+    ice: 'hielo',
+    flying: 'volador',
+    dark: 'oscuro',
+    dragon: 'dragón',
+    steel: 'acero'
+  }
+
   const handleScroll = (e) => {
       const tablaContainer = document.getElementById("tabla-container");
     
@@ -72,7 +93,8 @@ export const Filtro = () => {
             if (tipo === 'todos') {
                return (<div onClick={ () => window.location.href = '/' } className='item-filter' style={{background: '#00aeca'}}> todos </div>);
             } else {
-              return <ScreenType type={tipo}/> ;
+              return (<div onClick={ () => window.location.href = `/types/${tipo}` } className={`item-filter ${tipo}`}> { tiposES[tipo] } </div>);
+              {/* return <ScreenType type={tipo}/> ; */}
             }
           })
         }

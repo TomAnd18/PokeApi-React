@@ -135,7 +135,7 @@
     align-items: center;
     padding: 10px;
     width: 15rem;
-    height: 18rem;
+    height: 22rem;
     margin: 1.5rem;
     position: relative;
 }
@@ -209,6 +209,7 @@
 
 .img-pokemon-container img {
     width: 100%;
+    /* filter: drop-shadow(-20px 20px 2px #333333); */
 }
 
 .card-container h2 {
@@ -223,6 +224,74 @@
     text-overflow: ellipsis;
     font-family: 'Quicksand', sans-serif;
     padding: 8px 0;
+}
+
+/* Estilos a card de la ruta type */
+#cardtype-container {
+    width: 20rem;
+    height: 6rem;
+    position: relative;
+    overflow: visible;
+    display: flex;
+    justify-content: center;align-items: flex-start;
+}
+
+#cardtype-container h3 {
+    font-size: 1.5rem;
+    top: 8px;
+    color: #ffffffc7;
+}
+
+#imgpokemon-type {
+    width: 40%;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: -50px;
+}
+
+#imgpokemon-type  img {
+    width: 100%;
+    filter: drop-shadow(-10px 10px 2px #333333);
+}
+
+#imgiconocard-type {
+    position: absolute;
+    filter: opacity(0.4);
+    width: 80px;
+    height: 80px;
+    left: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imgiconocard-type img {
+    width: 100%;
+}
+
+#namepokemon-type {
+    width: 50%;
+    text-align: left;
+    padding-left: 0.5rem;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    margin: 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.cardfalse-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 20rem;
+    height: 6rem;
+    margin: 1.5rem;
+    position: relative;
 }
 
 @media screen and (max-width: 991px) {

@@ -88,7 +88,7 @@ export const Home = () => {
                                     <p> { info }  </p>
                                 </div>
                                 {
-                                    pokemones.map((pokemon, i) => ( <NewCard key={i} url={pokemon.url}/> ))
+                                    pokemones.map((pokemon, i) => ( <NewCard key={i} url={pokemon.url} showBotones={true}/> ))
                                 }
                             </div>
                                 
