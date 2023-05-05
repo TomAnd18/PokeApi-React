@@ -1,23 +1,21 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { getPokemonById, getDescriptionPokemon, getPokemonEvolution} from '../services/api';
+import { CardsDetails } from '../components/CardsDetails';
+import StatProgress from '../components/StatProgress';
+import ExperienceProgress from '../components/ExperienceProgress';
 import '../styles/details.css';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
-import StatProgress from '../components/StatProgress';
-import { CardsDetails } from '../components/CardsDetails';
-import ExperienceProgress from '../components/ExperienceProgress';
+import { CircularProgress, Box } from '@mui/material';
 
 export const ScreenDetails = ({ id }) => {
+    const [myID, setMyID] = useState(id);
     const [pokemon, setPokemon] = useState({});
-    // const [pokemonNext, setNextPokemon] = useState({});
     const [loading, setLoading] = useState(true);
     const [descripcion, setDescripcion] = useState([]);
     const [evolucion, setEvolucion] = useState([]);
+    const [numXP, setNumXP] = useState(0);
     const statsName =  [
         'PS',
         'Ataque',
@@ -26,20 +24,15 @@ export const ScreenDetails = ({ id }) => {
         'Defensa Especial',
         'velocidad',
     ];
-    const [numXP, setNumXP] = useState(0);
-    let navigate = useNavigate();
-
     
     const loadPokemon = async (isID) => {
         setLoading(true);
 
         const datos = await getPokemonById(isID);
         const description = await getDescriptionPokemon(datos.species.url);
-        // const datosNext = await getPokemonById(parseInt(isID)+1);
         console.log(datos);
         setPokemon(datos);
         setDescripcion(description);
-        // setNextPokemon(datosNext);
 
         const evoluciones = await getPokemonEvolution(datos.species.url);
         setEvolucion(evoluciones);
@@ -62,20 +55,19 @@ export const ScreenDetails = ({ id }) => {
           setNumXP(valor);
         }, 15);
     }, [setNumXP]);
-      
 
     useEffect(() => {
-        loadPokemon(id);
-    }, [id])
+        loadPokemon(myID);
+    }, [myID]);
 
     const btnAnterior = () => {
-        id--;
-        navigate(`/details/${id}`);
+        
+        setMyID(myID-1);
     }
 
     const btnSiguiente = () => {
-        id++;
-        navigate(`/details/${id}`);
+        
+        setMyID(myID+1);
     }
 
     return (
@@ -93,12 +85,9 @@ export const ScreenDetails = ({ id }) => {
                         
                     </div>
                     <div className='container-back-details'>
-                        <div className='btn-back-container'>
-                            <button className='btn-back' onClick={() => { window.location.href = '/' }}> <ArrowBackIcon/> <span> Volver </span> </button>
-                        </div>
                         <div className='details-true-container'>
                             <div className='btn-anterior-container'>
-                                <button className='btn-anterior-siguiente' disabled={ id > 1 ? false : true } onClick={btnAnterior}> <KeyboardDoubleArrowLeftIcon/> </button>
+                                <button className='btn-anterior-siguiente' disabled={ myID > 1 ? false : true } onClick={btnAnterior}> <KeyboardDoubleArrowLeftIcon/> </button>
                             </div>
                             <div className='container-detalles-pokemon'>
                                 <div className='info-pokemon-details'>
@@ -165,7 +154,7 @@ export const ScreenDetails = ({ id }) => {
                                 <CardsDetails pokemon={pokemon}/>
                             </div>
                             <div className='btn-siguiente-container'>
-                                <button className='btn-anterior-siguiente' disabled={ id < 10270 ? false : true } onClick={btnSiguiente}> <KeyboardDoubleArrowRightIcon/> </button>
+                                <button className='btn-anterior-siguiente' disabled={ myID < 10270 ? false : true } onClick={btnSiguiente}> <KeyboardDoubleArrowRightIcon/> </button>
                             </div>
                         </div>
                     </div>

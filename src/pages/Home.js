@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getPokemones, getPokemonById, getokemonesByType } from '../services/api';
+import { getPokemones, getPokemonById } from '../services/api';
 import { Card } from '../components/Card';
 import '../styles/home.css';
 import Nav from '../components/Nav';
@@ -7,6 +7,7 @@ import { Filtro } from '../components/Filtro';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import nofound from '../images/no-ncontrado.png';
+import NewCard from '../components/NewCard';
 
 export const Home = () => {
     const [pokemones,setPokemones] = useState([]);
@@ -87,7 +88,7 @@ export const Home = () => {
                                     <p> { info }  </p>
                                 </div>
                                 {
-                                    pokemones.map((pokemon, i) => ( <Card key={i} url={pokemon.url}/> ))
+                                    pokemones.map((pokemon, i) => ( <NewCard key={i} url={pokemon.url}/> ))
                                 }
                             </div>
                                 
